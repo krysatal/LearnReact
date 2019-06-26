@@ -4,8 +4,8 @@ class Service extends Component {
     constructor (props) {
         super(props)        // 调用父级方法
         this.state = {      // 数据对象
-            inputVal: 'hello',
-            list: []
+            inputVal: '',
+            list: ['按摩', '推背', '洗脚']
         }
     }
 
@@ -20,22 +20,29 @@ class Service extends Component {
                 </div>
                 <div className="form-group">
                     <div className="col-sm-offset-2 col-sm-10">
-                        <button className="btn btn-default">添加</button>
+                        <button className="btn btn-default" onClick={this.addList.bind(this)}>添加</button>
                     </div>
                 </div>
                 <div className="form-group">
                     <ul>
-                        <li>122</li>
-                        <li>122</li>
+                        {this.state.list.map((item, index)=>{
+                            return <li key={index+item}>{index}:{item}</li>
+                        })}
                     </ul>
                 </div>
             </Fragment>
         )
     }
     inputChange(e) {
-        console.log(this) // 解决this指向可以用bind
-        this.setState({
+        // console.log(this) // 解决this指向可以用bind
+        this.setState({   // 改变绑定的值用setState改变状态
             inputVal: e.target.value
+        })
+    }
+    // 添加li
+    addList () {
+        this.setState({
+            list: [...this.state.list, this.state.inputVal]
         })
     }
 }
