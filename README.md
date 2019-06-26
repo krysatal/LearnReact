@@ -9,6 +9,7 @@
     let child1 = React.createElement('li', null, 'hello world')
     let child2 = React.createElement('li', null, 'Learn JSX')
     let ul = React.createElement('ul', {className: 'my-list'}, child1, child2)
+    组件最外层必须包裹div，否则会报错。但有的时候我们不需要最外层包裹，比如说flex布局。这时候引入Fragment
 
     
 
