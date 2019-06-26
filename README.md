@@ -20,6 +20,6 @@
     加html解析 dangerouslySetInnerHTML={{__html:item}}
     label标签for定位input框会报错。为了区别for循环，所以在label标签中要用htmlFor
 ## test.js
-    代码插件simple React snippets
+    代码插件simple React snippets 可以快速补齐代码
 
 
