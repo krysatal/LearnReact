@@ -15,6 +15,7 @@
     解决方法中this指向可以在方法引用的地方用es6的方法bind(this)。
     循环输出数组要使用唯一的key，一般可使用如下:
     key={index+item}
+    不能直接操作state里面的值
     
 
 
