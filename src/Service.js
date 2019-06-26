@@ -13,9 +13,9 @@ class Service extends Component {
         return (
             <Fragment>
                 <div className="form-group">
-                    <label className="col-sm-2 control-label">服务</label>
+                    <label htmlFor="hello" className="col-sm-2 control-label">增加服务：</label>
                     <div className="col-sm-10">
-                        <input className="form-control" type="text" value={this.state.inputVal} onChange={this.inputChange.bind(this)}></input>
+                        <input id="hello" className="form-control" type="text" value={this.state.inputVal} onChange={this.inputChange.bind(this)}></input>
                     </div>
                 </div>
                 <div className="form-group">
@@ -27,7 +27,10 @@ class Service extends Component {
                     <ul>
                         {this.state.list.map((item, index)=>{
                             return (
-                                <li key={index+item} onClick={this.deleteList.bind(this, index)}>
+                                <li 
+                                    key={index+item}
+                                    onClick={this.deleteList.bind(this, index)}
+                                >
                                     {index}:{item}
                                 </li>
                             )
@@ -49,6 +52,7 @@ class Service extends Component {
             list: [...this.state.list, this.state.inputVal]
         })
     }
+    // 删除li
     deleteList (index) {
         let list = this.state.list
         list.splice(index, 1)

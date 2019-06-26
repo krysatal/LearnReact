@@ -16,6 +16,8 @@
     循环输出数组要使用唯一的key，一般可使用如下:
     key={index+item}
     不能直接操作state里面的值
-    
+    {/* 正确使用注释 */}
+    加html解析 dangerouslySetInnerHTML={{__html:item}}
+    label标签for定位input框会报错。为了区别for循环，所以在label标签中要用htmlFor
 
 
