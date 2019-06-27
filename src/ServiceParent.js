@@ -27,7 +27,7 @@ class ServiceParent extends Component {
                     <ul>
                         {this.state.list.map((item, index)=>{
                             return (
-                                <ServiceChild key={item+index} liData={item} indexData={index} deleteItem={this.deleteList.bind(this)} />
+                                <ServiceChild key={item+index} liData={item} indexData={index} deleteItem={this.deleteList.bind(this)} requireData={'测试必填校验'} />
                             )
                             })
                         }
