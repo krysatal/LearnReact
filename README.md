@@ -22,4 +22,7 @@
 ## test.js
     代码插件simple React snippets 可以快速补齐代码
 
-
+## ServiceParent/ServiceChild
+    父组件向子组件传值：在父组件中<ServiceParent 属性名={要传递的值} />，在子组件中<div>{this.props.属性名}</div>
+    子组件向父组件传值：但是React有明确规定，子组件时不能操作父组件里的数据的，所以需要借助一个父组件的方法，来修改父组件的内容。在子组件ServiceChild中执行父组件的deleteList方法执行删除。删除的下标和方法需要父组件ServiceParent传递过来。
+    可以在构造方法constructor中绑定this。

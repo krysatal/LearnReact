@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Service from './Service';
+// import Service from './Service'
+import ServiceParent from './ServiceParent';
 
-ReactDOM.render(<Service />, document.getElementById('root'));
+ReactDOM.render(<ServiceParent />, document.getElementById('root'));

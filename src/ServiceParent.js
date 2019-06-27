@@ -1,7 +1,7 @@
-import React, {Component, Fragment} from 'react'
+import React, { Component } from 'react';
 import ServiceChild from './ServiceChild'
 
-class Service extends Component {
+class ServiceParent extends Component {
     constructor (props) {
         super(props)        // 调用父级方法
         this.state = {      // 数据对象
@@ -9,10 +9,9 @@ class Service extends Component {
             list: ['按摩', '推背', '洗脚']
         }
     }
-
-    render () {
-        return (
-            <Fragment>
+    render() { 
+        return ( 
+            <div>
                 <div className="form-group">
                     <label htmlFor="hello" className="col-sm-2 control-label">增加服务：</label>
                     <div className="col-sm-10">
@@ -28,19 +27,14 @@ class Service extends Component {
                     <ul>
                         {this.state.list.map((item, index)=>{
                             return (
-                                <li 
-                                    key={index+item}
-                                    onClick={this.deleteList.bind(this, index)}
-                                >
-                                    {index}:{item}
-                                </li>
+                                <ServiceChild key={item+index} liData={item} indexData={index} deleteItem={this.deleteList.bind(this)} />
                             )
-                        })}
+                            })
+                        }
                     </ul>
                 </div>
-                <ServiceChild />
-            </Fragment>
-        )
+            </div>
+         )
     }
     inputChange(e) {
         // console.log(this) // 解决this指向可以用bind
@@ -63,4 +57,5 @@ class Service extends Component {
         })
     }
 }
-export default Service
+ 
+export default ServiceParent;
