@@ -57,4 +57,4 @@
         })
     }
 ## React的生命周期
-<img src="../public/React1901.png" />
+<img src="/public/React1901.png" />
