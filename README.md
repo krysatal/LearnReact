@@ -57,7 +57,7 @@
         })
     }
 ## React的生命周期
-<img src="/public/React1901.png" />
+    <img src="/public/React1901.png" />
 ## React的生命周期详解
     1.Initialization:初始化阶段。
     2.Mounting:DOM挂载阶段。它里边有三个小的生命周期函数。
