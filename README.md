@@ -26,3 +26,13 @@
     父组件向子组件传值：在父组件中<ServiceParent 属性名={要传递的值} />，在子组件中<div>{this.props.属性名}</div>
     子组件向父组件传值：但是React有明确规定，子组件时不能操作父组件里的数据的，所以需要借助一个父组件的方法，来修改父组件的内容。在子组件ServiceChild中执行父组件的deleteList方法执行删除。删除的下标和方法需要父组件ServiceParent传递过来。
     可以在构造方法constructor中绑定this。
+    单项数据流：在父组件中listData={this.state.list}传值给子组件，在子组件中的handleClick方法中this.props.listData=[]。在点击子组件的时候会报错。这就是React设置的单项数据流。意思就是list是只读的。我们只能在子组件中调用父组件的方法进行修改。
+    子组件对父组件传递的值需要进行校验：在子组件中引入import propTypes from 'prop-types', 组件名.propTypes={
+        requireData:propTypes.string.isRequired, //必传值的校验
+        liData:propTypes.string,
+        indexData:propTypes.number,
+        deleteItem:propTypes.func
+    }在JSX中引用{this.props.requireData}此时如果父组件中不传该项的值就会报错
+    设置默认值：在子组件中，组件名.defaultProps={
+        defaultData: '设置的默认值'
+    }在JSX中引用{this.props.defaultData}
