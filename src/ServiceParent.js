@@ -15,7 +15,7 @@ class ServiceParent extends Component {
                 <div className="form-group">
                     <label htmlFor="hello" className="col-sm-2 control-label">增加服务：</label>
                     <div className="col-sm-10">
-                        <input id="hello" className="form-control" type="text" value={this.state.inputVal} onChange={this.inputChange.bind(this)}></input>
+                        <input id="hello" className="form-control" type="text" value={this.state.inputVal} onChange={this.inputChange.bind(this)} ref={(input)=>{this.input=input}}></input>
                     </div>
                 </div>
                 <div className="form-group">
@@ -24,7 +24,7 @@ class ServiceParent extends Component {
                     </div>
                 </div>
                 <div className="form-group">
-                    <ul>
+                    <ul ref={(ul)=>{this.ul=ul}}>
                         {this.state.list.map((item, index)=>{
                             return (
                                 <ServiceChild key={item+index} liData={item} indexData={index} deleteItem={this.deleteList.bind(this)} requireData={'测试必填校验'} />
@@ -37,16 +37,19 @@ class ServiceParent extends Component {
          )
     }
     inputChange(e) {
-        // console.log(this) // 解决this指向可以用bind
+        console.log(this) // 解决this指向可以用bind
         this.setState({   // 改变绑定的值用setState改变状态
-            inputVal: e.target.value
+            inputVal: this.input.value
         })
     }
     // 添加li
     addList () {
         this.setState({
             list: [...this.state.list, this.state.inputVal]
+        },function() {
+            console.log(this.ul.querySelectorAll('li').length)
         })
+        // console.log(this.ul.querySelectorAll('li').length)
     }
     // 删除li
     deleteList (index) {

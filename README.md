@@ -36,3 +36,24 @@
     设置默认值：在子组件中，组件名.defaultProps={
         defaultData: '设置的默认值'
     }在JSX中引用{this.props.defaultData}
+    使用ref进行绑定DOM：如在JSX中<input value={this.state.inputValue} ref={(index)=>{this.input=input}} onChange={this.inputChange.bind(this)} />
+    在方法中 inputChange () {
+        this.setState={
+            inputVal: this.input.value
+        }
+    }
+    ref使用中的坑：如在子组件JSX中<ul ref={(ul)=>{this.ul=ul}}>
+    在方法中 addList () {
+        this.setState({
+            list: [...this.state.list, this.state.inputVal]
+        })
+        console.log(this.ul.querySelectorAll('li').length) //此时输出的内容会少一个，是因为setState是一个异步函数所造成的
+    }
+    解决办法就是setState方法提供了一个回调函数，如下：
+    addList () {
+        this.setState({
+            list: [...this.state.list, this.state.inputVal]
+        },function(){
+            console.log(this.ul.querySelectorAll('li').length)
+        })
+    }
