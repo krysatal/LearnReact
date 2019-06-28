@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ServiceChild from './ServiceChild'
+import axios from 'axios'
 
 class ServiceParent extends Component {
     constructor (props) {
@@ -9,7 +10,33 @@ class ServiceParent extends Component {
             list: ['按摩', '推背', '洗脚']
         }
     }
+    componentWillMount () {
+        console.log('componentWillMount---组件将要挂在到页面的时刻')
+    }
+    componentDidMount () {
+        axios.post('https://web-api.juejin.im/v3/web/wbbr/bgeda').then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+        console.log('componentDidMount---组件挂载完成的时刻')
+    }
+    // shouldComponentUpdate (nextProps,nextState) {
+    //     console.log('shouldComponentUpdate---在组件更新之前执行，要求我们返回布尔值')
+    //     if(nextProps.liData !== this.props.liData){
+    //         return true
+    //     }else{
+    //         return false
+    //     }
+    // }
+    componentWillUpdate () {
+        console.log('componentWillUpdate---在组件更新之前，在shouldComponentUpdate之后，若shouldComponentUpdate返回true执行，返回false不执行')
+    }
+    componentDidUpdate () {
+        console.log('componentWillUpdate---组件更新完毕之后执行')
+    }
     render() { 
+        console.log('render---组件挂载中')
         return ( 
             <div>
                 <div className="form-group">
@@ -37,7 +64,7 @@ class ServiceParent extends Component {
          )
     }
     inputChange(e) {
-        console.log(this) // 解决this指向可以用bind
+        // console.log(this) // 解决this指向可以用bind
         this.setState({   // 改变绑定的值用setState改变状态
             inputVal: this.input.value
         })

@@ -58,8 +58,11 @@
     }
 ## React的生命周期
     <img src="/public/React1901.png" />
-## React的生命周期详解
+## React的生命周期详解(在某一时刻可以自动执行的函数)
     1.Initialization:初始化阶段。
+        {
+            set props and state
+        }
     2.Mounting:DOM挂载阶段。它里边有三个小的生命周期函数。
         {
             1.componentWillMount:在组件即将被挂载到页面的时刻执行。(只执行一次)
@@ -77,3 +80,18 @@
         {
             1.componentWillUnmount:组件从页面中删除的时候执行
         }
+## 解决Render重复渲染的问题
+    1.shouldComponentUpdate(nextProps,nextState){
+        if(nextProps.liData !== this.props.liData){
+        return true
+        }else{
+        return false
+        }
+    }
+## React当中使用axios
+    1.npm install axios          安装到项目目录下面，不会在package.json中添加依赖
+    2.npm install -g axios       系统全局安装会根据npmconfig文件的prefix指定的来安装
+    3.npm install -save axios    下载到项目目录node_modules下面，并且package.json中添加依赖
+    4.npm install -save-dev axios生产环境上面要下载的包
+    5.使用方法同vue
+

@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import ServiceChild from './ServiceChild'
 
 class Service extends Component {
     constructor (props) {
@@ -38,7 +37,6 @@ class Service extends Component {
                         })}
                     </ul>
                 </div>
-                <ServiceChild />
             </Fragment>
         )
     }
