@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ServiceChild from './ServiceChild'
+import Animation from './Animation'
+import './style.css'
 import axios from 'axios'
 
 class ServiceParent extends Component {
@@ -60,6 +62,7 @@ class ServiceParent extends Component {
                         }
                     </ul>
                 </div>
+                <Animation></Animation>
             </div>
          )
     }
