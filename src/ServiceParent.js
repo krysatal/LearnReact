@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import ServiceChild from './ServiceChild'
 import Animation from './Animation'
 import './style.css'
+import 'antd/dist/antd.css'
+import { Form, Button } from 'antd'
 import axios from 'axios'
+import TestStore from './TestStore'
 
 class ServiceParent extends Component {
     constructor (props) {
@@ -41,7 +44,25 @@ class ServiceParent extends Component {
         console.log('render---组件挂载中')
         return ( 
             <div>
-                <div className="form-group">
+                <Form>
+                    <Form.Item label="增加服务：">
+                        <input id="hello" className="form-control" type="text" value={this.state.inputVal} onChange={this.inputChange.bind(this)} ref={(input)=>{this.input=input}}></input>
+                    </Form.Item>
+                    <Form.Item>
+                        <Button type="primary" onClick={this.addList.bind(this)}>添加</Button>
+                    </Form.Item>
+                    <Form.Item>
+                    <ul ref={(ul)=>{this.ul=ul}}>
+                        {this.state.list.map((item, index)=>{
+                            return (
+                                <ServiceChild key={item+index} liData={item} indexData={index} deleteItem={this.deleteList.bind(this)} requireData={'测试必填校验'} />
+                            )
+                            })
+                        }
+                    </ul>
+                    </Form.Item>
+                </Form>
+                {/* <div className="form-group">
                     <label htmlFor="hello" className="col-sm-2 control-label">增加服务：</label>
                     <div className="col-sm-10">
                         <input id="hello" className="form-control" type="text" value={this.state.inputVal} onChange={this.inputChange.bind(this)} ref={(input)=>{this.input=input}}></input>
@@ -51,8 +72,8 @@ class ServiceParent extends Component {
                     <div className="col-sm-offset-2 col-sm-10">
                         <button className="btn btn-default" onClick={this.addList.bind(this)}>添加</button>
                     </div>
-                </div>
-                <div className="form-group">
+                </div> */}
+                {/* <div className="form-group">
                     <ul ref={(ul)=>{this.ul=ul}}>
                         {this.state.list.map((item, index)=>{
                             return (
@@ -61,8 +82,9 @@ class ServiceParent extends Component {
                             })
                         }
                     </ul>
-                </div>
+                </div> */}
                 <Animation></Animation>
+                <TestStore></TestStore>
             </div>
          )
     }

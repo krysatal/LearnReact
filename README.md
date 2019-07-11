@@ -95,3 +95,36 @@
     4.npm install -save-dev axios生产环境上面要下载的包
     5.使用方法同vue
 
+## ReduX学习
+## UI框架: Ant Design
+    1.npm install antd --save或者yarn add antd  安装
+    2.import 'antd/dist/antd.css' 引入CSS样式
+    3.import { Input } from 'antd' 引入input组件
+      <Input placeholder='...' style={{ width:'250px'}}/>  引用input组件
+## 创建Redux中的仓库-store和reducer
+    1.npm install --save redux  安装
+    2.安装好redux之后，在src目录下创建一个store文件夹,然后在文件夹下创建一个index.js文件编写如下代码：
+    import {createStore} form 'redux'
+    const store = createStore()
+    export default store
+    3.在store文件夹下面新建reducer.js编写如下代码：
+    const defaultStore = {} //默认数据
+    export default (state = dafaultState , action) => {
+        return state
+    }
+    4.把reducer引入到store中,再创建store时，以参数的形式传递给store编码如下：
+    import {createStore} from 'redux'
+    import reducer from 'reducer'
+    const store = createStore(reducer)
+    export default store
+    5.在reducer.js文件的defaultState对象中，加入两个属性:inputValue和list编码如下：
+    const defaultStore = {
+        inputValue = ''
+        list: [
+            'one',
+            'two'
+        ]
+    }
+    6.在组件中进行引入
+    import store from './store/index'
+    7.在构造方法里直接赋值后在render引用

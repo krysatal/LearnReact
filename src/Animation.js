@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import 'antd/dist/antd.css'
+import { Button } from 'antd'
+
 class Animation extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +13,7 @@ class Animation extends Component {
         return ( 
             <div>
                 <div className={this.state.isShow ? 'show' : 'hide'}>CSS3实现React动画</div>
-                <button type="button" className="btn btn-success" onClick={this.toggleClick.bind(this)}>点击按钮</button>
+                <Button type="success" onClick={this.toggleClick.bind(this)}>点击按钮</Button>
             </div>
          )
     }
