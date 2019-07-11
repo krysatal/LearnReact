@@ -128,3 +128,31 @@
     6.在组件中进行引入
     import store from './store/index'
     7.在构造方法里直接赋值后在render引用
+    8.ReduxParent组件是使用Redux实现列表添加删除操作,例如，输入的input的内容通过onchange方法改变state的值，方法如下
+    在组件中的方法中
+    onChangeFunction() {
+        const action = {
+            type: '属性名',
+            value: 要改变的新值
+        }
+        store.dispatch(action)
+    }
+    在reducer.js中接受新值（记住：Reducer里只能接收state，不能改变state。）
+    export default (state = dafaultState , action) => {
+        if(action.type === '属性名') {
+            let newState = JSON.parse(JSON.stringify(state)) //深度拷贝state
+            newState.inputValue = action.value //将新值赋值给申明的变量return回组件
+            return newState
+        }
+            return state
+        }
+    在组件中订阅redux，改变组件内容，在constructor方法中
+    constructor(props) {
+        super(props)
+        this.stateChange = this.stateChange.bind(this)
+        store.subscribe(this.stateChange)
+    }
+    定义一个方法
+    stateChange() {
+        this.setState(store.getState())
+    }

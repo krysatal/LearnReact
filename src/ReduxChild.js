@@ -11,7 +11,7 @@ class ReduxChild extends Component{
     }
     render() {
         return (
-            <div style={{margin:'10px',width:'300px'}}>
+            <div style={{marginTop:'10px',width:'300px'}}>
                 <List
                     bordered
                     dataSource={this.props.myStore.list}
